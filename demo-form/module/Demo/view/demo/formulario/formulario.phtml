@@ -98,6 +98,37 @@ echo $this->form()->openTag($form);
     </fieldset>
 
 
+ <fieldset class="c6">
+        <?php
+            $form_element = $form->get('chk_politica');
+            echo $formLabel->openTag().$form_element->getOption('label').$formLabel->closeTag();
+            echo $this->formCheckbox($form_element);
+        ?>
+    </fieldset>
+
+ <fieldset class="c6">
+        <?php
+            $form_element = $form->get('chk_multi');
+            echo $formLabel->openTag().$form_element->getOption('label').$formLabel->closeTag();
+            echo $this->formMultiCheckbox($form_element);
+        ?>
+    </fieldset>
+
+    <fieldset class="c6">
+        <?php
+            $form_element = $form->get('rd_multi');
+            echo $formLabel->openTag().$form_element->getOption('label').$formLabel->closeTag();
+            echo $this->formRadio($form_element);
+        ?>
+    </fieldset>
+
+    <fieldset class="c6">
+        <?php
+            $form_element = $form->get('Paises_');
+            echo $formLabel->openTag().$form_element->getOption('label').$formLabel->closeTag();
+            echo $this->formSelect($form_element);
+        ?>
+    </fieldset>
 
 
 

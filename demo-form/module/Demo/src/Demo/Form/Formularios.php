@@ -120,7 +120,6 @@ class Formularios extends Form
 
   public function elementCaptcha($name , $nameLabel , $classCss = "form-control" )
   {
-
       $this->add(
                array(
                   'type' => 'Zend\Form\Element\Captcha',
@@ -132,9 +131,64 @@ class Formularios extends Form
                       ),
                   ),
           ));
-
-
   }
+
+  public function inputCheckbox($name , $nameLabel , $value = '' , $classCss = "form-control" )
+  {
+      $this->add(array(
+                 'type' => 'Zend\Form\Element\Checkbox',
+                 'name' => $name,
+                 'options' => array(
+                         'label' => $nameLabel,
+                         'checked_value' =>  $value,
+                 )
+         ));
+  }
+
+/* options_values =  array(
+       '0' => 'Apple',
+       '1' => 'Orange',
+       '2' => 'Lemon',
+    )*/
+
+  public function inputMultiCheckbox($name , $nameLabel , $options_values  = array() )
+  {
+       $this->add(array(
+               'type' => 'Zend\Form\Element\MultiCheckbox',
+               'name' => $name ,
+               'options' => array(
+                       'label' =>  $nameLabel,
+                       'value_options' => $options_values ,
+               )
+       ));
+  }
+
+  public function inputMultiRadio($name , $nameLabel , $options_values  = array() )
+  {
+       $this->add(array(
+               'type' => 'Zend\Form\Element\Radio',
+               'name' => $name ,
+               'options' => array(
+                       'label' =>  $nameLabel,
+                       'value_options' => $options_values ,
+               )
+       ));
+  }
+
+
+  public function selectOption($name , $nameLabel , $options_values  = array() , $optionEmpty = '[Seleccione Opcion ]' )
+  {
+       $this->add(array(
+               'type' => 'Zend\Form\Element\Select',
+               'name' => $name ,
+               'options' => array(
+                       'label' =>  $nameLabel,
+                       'empty_option' => $optionEmpty,
+                       'value_options' => $options_values ,
+               )
+       ));
+  }
+
 
 
 
