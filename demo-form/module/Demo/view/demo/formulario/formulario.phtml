@@ -29,42 +29,7 @@ echo $this->form()->openTag($form);
             echo $this->formInput($name);
         ?>
     </fieldset>
-
-     <fieldset class="c6">
-        <?php
-            $name = $form->get('Nombre');
-            echo $formLabel->openTag().$name->getOption('label').$formLabel->closeTag();
-            echo $this->formInput($name);
-        ?>
-    </fieldset>
-
-     <fieldset class="c6">
-        <?php
-            $name = $form->get('Nombre');
-            echo $formLabel->openTag().$name->getOption('label').$formLabel->closeTag();
-            echo $this->formInput($name);
-        ?>
-    </fieldset>
-
-     <fieldset class="c6">
-        <?php
-            $name = $form->get('Nombre');
-            echo $formLabel->openTag().$name->getOption('label').$formLabel->closeTag();
-            echo $this->formInput($name);
-        ?>
-    </fieldset>
-
-
     <fieldset class="c6">
-        <?php
-            $email = $form->get('email');
-            echo $formLabel->openTag().$email->getOption('label').$formLabel->closeTag();
-            echo $this->formInput($email);
-            //echo $this->formElementErrors($name);
-        ?>
-    </fieldset>
-
-     <fieldset class="c6">
         <?php
             $apellidos = $form->get('Apellido');
             echo $formLabel->openTag().$apellidos->getOption('label').$formLabel->closeTag();
@@ -130,11 +95,37 @@ echo $this->form()->openTag($form);
         ?>
     </fieldset>
 
+    <fieldset class="c6">
+        <?php
+            $form_element = $form->get('fechaNac');
+            echo $formLabel->openTag().$form_element->getOption('label').$formLabel->closeTag();
+            echo $this->formDate($form_element);
+        ?>
+    </fieldset>
+
+    <fieldset class="c6">
+        <?php
+            $form_element = $form->get('img_');
+            // echo $formLabel->openTag().$form_element->getOption('label').$formLabel->closeTag();
+             echo $this->formLabel($form_element);
+            echo $this->formFile($form_element);
+        ?>
+    </fieldset>
+
+    <fieldset class="c6">
+        <?php
+            $form_element = $form->get('img_');
+            // echo $formLabel->openTag().$form_element->getOption('label').$formLabel->closeTag();
+            echo $this->formLabel($form_element);
+            echo $this->formFile($form_element);
+        ?>
+    </fieldset>
 
 
 	<fieldset class=" text-right">
-		<?php echo $this->formElement($form->get('send')) ?>
+		<?php echo $this->formElement($form->get('btnEnviar')) ?>
 	</fieldset>
+
 </fieldset>
 
 <?php echo $this->form()->closeTag() ?>

@@ -27,6 +27,7 @@ class FormularioController extends AbstractActionController
     public function formularioAction()
     {
         $objForm = new Formularios("Form");
+        $objForm->inputText("Nombre" ,"Ingrese su Nombre ", "form-control" ) ;
         $objForm->inputText("Apellido" ,"Ingrese sus Apellidos ", "form-control" ) ;
         $objForm->inputEmail("emailUser" ,"Ingrese Email ", "form-control" ) ;
         $objForm->textArea("mensaje" ,"Mensaje ", "form-control" ) ;
@@ -35,6 +36,9 @@ class FormularioController extends AbstractActionController
         $chk_mul = array('0' => 'Apple', '1' => 'Orange', '2' => 'Lemon', )  ;
         $objForm->inputMultiCheckbox("chk_multi" ,"Check multiple  ",$chk_mul ) ;
         $objForm->inputMultiRadio("rd_multi" ,"Check multiple  ",$chk_mul ) ;
+        $objForm->inputDate("fechaNac" ,"Fecha de Nacimiento",'' ) ;
+        $objForm->inputFile("img_" , "suba su imagen" ) ;
+        $objForm->inputButton("btnEnviar" , "Registrar Datos" , "btn btn-default" );
 
         $paises = array(
              '0' => 'French',
