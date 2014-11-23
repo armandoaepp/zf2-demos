@@ -17,7 +17,18 @@ class Formularios extends Form
 
 	}
 
-
+  # input type hidden
+  public function elementHidden($name , $value = ""  )
+  {
+    $this->add(array(
+              'name' => $name,
+             'attributes' => array(
+                'id'    => $name,
+                'value'    => $value,
+              ),
+            ));
+  }
+# input type text
   public function elementText($name , $nameLabel , $value = "" , $classCss = "" )
   {
     $this->add(array(
@@ -34,6 +45,7 @@ class Formularios extends Form
             ));
   }
 
+  # input type email
   public function elementEmail($name , $nameLabel , $value= "" , $classCss = "" )
   {
       $this->add(array(
@@ -50,7 +62,7 @@ class Formularios extends Form
         ));
   }
 
-  # campo de tipo password
+  # input type password
   public function elementPassword($name , $nameLabel , $value= "" , $classCss = "" )
   {
         $this->add(array(
@@ -68,37 +80,7 @@ class Formularios extends Form
         );
   }
 
-
-
-
-  public function elementCheckbox($name , $nameLabel , $value = "" , $classCss = "" )
-  {
-      $this->add(array(
-                 'type' => 'Zend\Form\Element\Checkbox',
-                 'name' => $name,
-                 'options' => array(
-                         'label' => $nameLabel,
-                         'checked_value' =>  $value,
-                 )
-         ));
-  }
-
-  public function textArea($name , $nameLabel , $value = "" , $classCss = "" )
-  {
-      $this->add(array(
-            'type' => 'Zend\Form\Element\Textarea',
-            'name' => $name,
-            'options' => array(
-                'label' =>  $nameLabel,
-            ),
-            'attributes' => array(
-                'value' => $value ,
-                'class' => $classCss ,
-                'id' => $name ,
-            ),
-        ));
-  }
-
+  # input type captcha
   public function elementCaptcha($name , $nameLabel , $classCss = "" )
   {
       $this->add(
@@ -113,31 +95,7 @@ class Formularios extends Form
                   ),
           ));
   }
-
-  public function elementMultiCheckbox($name , $nameLabel , $options_values  = array() )
-  {
-       $this->add(array(
-               'type' => 'Zend\Form\Element\MultiCheckbox',
-               'name' => $name ,
-               'options' => array(
-                       'label' =>  $nameLabel,
-                       'value_options' => $options_values ,
-               )
-       ));
-  }
-
-  public function elementMultiRadio($name , $nameLabel , $options_values  = array() )
-  {
-       $this->add(array(
-               'type' => 'Zend\Form\Element\Radio',
-               'name' => $name ,
-               'options' => array(
-                       'label' =>  $nameLabel,
-                       'value_options' => $options_values ,
-               )
-       ));
-  }
-
+   # input type date
   public function elementDate($name , $nameLabel,$value = "" , $classCss = "" )
   {
         $this->add(array(
@@ -154,6 +112,74 @@ class Formularios extends Form
         ));
   }
 
+  # input type  Checkbox para un unico elemento
+  public function elementCheckbox($name , $nameLabel , $value = "" , $classCss = "" )
+  {
+      $this->add(array(
+                 'type' => 'Zend\Form\Element\Checkbox',
+                 'name' => $name,
+                 'options' => array(
+                         'label' => $nameLabel,
+                         'checked_value' =>  $value,
+                 )
+         ));
+  }
+
+  # input type  Multiples Checkbox
+  public function elementMultiCheckbox($name , $nameLabel , $options_values  = array(), $classCss ="" )
+  {
+       $this->add(array(
+               'type' => 'Zend\Form\Element\MultiCheckbox',
+               'name' => $name ,
+               'options' => array(
+                       'label' =>  $nameLabel,
+                       'label_attributes' => array('class' => $classCss),
+                       'value_options' => $options_values ,
+               )
+       ));
+  }
+
+  # input type  Multiples radios
+  public function elementMultiRadio($name , $nameLabel , $options_values  = array(), $classCss ="" )
+  {
+       $this->add(array(
+               'type' => 'Zend\Form\Element\Radio',
+               'name' => $name ,
+               'options' => array(
+                       'label' =>  $nameLabel,
+                       'label_attributes' => array('class' => $classCss),
+                       'value_options' => $options_values ,
+               ),
+
+       ));
+  }
+
+   # input type textarea
+  public function elmentTextArea($name , $nameLabel , $value = "" , $classCss = "" )
+  {
+      $this->add(array(
+            'type' => 'Zend\Form\Element\Textarea',
+            'name' => $name,
+            'options' => array(
+                'label' =>  $nameLabel,
+            ),
+            'attributes' => array(
+                'value' => $value ,
+                'class' => $classCss ,
+                'id' => $name ,
+            ),
+        ));
+  }
+
+  # input type file
+  public function elementFile($name , $nameLabel )
+  {
+      // File element
+      $file = new Element\File($name);
+      $file->setLabel($nameLabel)
+           ->setAttribute('id', $name);
+      $this->add($file);
+  }
 
   /* options_values =  array(
        '0' => 'Apple',
@@ -161,7 +187,7 @@ class Formularios extends Form
        '2' => 'Lemon',
     )*/
 
-
+   # type select option
   public function elementSelect($name , $nameLabel , $options_values  = array()  , $classCss = "", $optionEmpty = '[Seleccionar Opcion ]' )
   {
        $this->add(array(
@@ -180,15 +206,7 @@ class Formularios extends Form
   }
 
 
-  public function elementFile($name , $nameLabel )
-  {
-      // File element
-      $file = new Element\File($name);
-      $file->setLabel($nameLabel)
-           ->setAttribute('id', $name);
-      $this->add($file);
-  }
-
+  # input type Submit
   public function elementSubmit($name , $nameLabel , $classCss = "btn" )
   {
        $this->add(array(
@@ -204,6 +222,7 @@ class Formularios extends Form
        ));
   }
 
+    # button type button
   public function elementButton($name , $nameLabel  , $onclick = "", $classCss = "btn" )
   {
      $this->add(array(
@@ -225,8 +244,5 @@ class Formularios extends Form
           )
       ));
   }
-
-
-
 
 }

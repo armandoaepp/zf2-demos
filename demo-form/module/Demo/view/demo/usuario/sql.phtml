@@ -1,0 +1,11 @@
+<h1><?php echo $this->titulo;?></h1>
+<ul>
+<?php
+foreach($datos as $dato)
+{
+    ?>
+    <li><?php echo $dato["id"]?> - <?php echo $dato["nombre"]?></li>
+    <?php
+}
+?>
+</ul>

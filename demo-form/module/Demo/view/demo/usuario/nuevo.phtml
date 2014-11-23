@@ -22,6 +22,7 @@ $formLabel = $this->plugin('formLabel');
 echo $this->form()->openTag($form);
 ?>
 <fieldset class="c12">
+    <?php echo $this->formHidden($form->get('oculto')) ?>
 <!-- forma1 de imprimir elementos de formulario -->
     <fieldset class="c6">
         <?php
@@ -32,15 +33,30 @@ echo $this->form()->openTag($form);
     </fieldset>
     <!-- forma 2 : de imprimir elementos de formulario -->
     <fieldset class="c6">
-        <?php   echo $this->formRow($form->get('apellido')) ?>
+        <?php   echo $this->formRow($form->get('apellidos')) ?>
     </fieldset>
 
     <fieldset class="c6">
         <?php   echo $this->formRow($form->get('email')) ?>
     </fieldset>
+
      <fieldset class="c6">
         <?php   echo $this->formRow($form->get('pass')) ?>
     </fieldset>
+
+     <fieldset class="c6">
+        <?php   echo $this->formRow($form->get('img_')) ?>
+    </fieldset>
+
+    <fieldset class="c6">
+      <?php
+            $form_element = $form->get('sexo');
+            echo $formLabel->openTag().$form_element->getOption('label').$formLabel->closeTag();
+            echo $this->formRadio($form_element);
+        ?>
+        <?php  // echo $this->formRow($form->get('sexo')) ?>
+    </fieldset>
+
 
 <div class="clear"></div>
 

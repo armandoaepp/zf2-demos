@@ -30,7 +30,7 @@ class FormularioController extends AbstractActionController
         $objForm->elementText("Nombre" ,"Ingrese su Nombre ", "","" ) ;
         $objForm->elementText("Apellido" ,"Ingrese sus Apellidos ", "","" ) ;
         $objForm->elementEmail("emailUser" ,"Ingrese Email ", "","" ) ;
-        $objForm->textArea("mensaje" ,"Mensaje ", "","" ) ;
+        $objForm->elmentTextArea("mensaje" ,"Mensaje ", "","" ) ;
         $objForm->elementCaptcha("Captcha" ,"Ingrese datos de la Imagen ", "","" ) ;
         $objForm->elementCheckbox("chk_politica" ,"Acepto las politicas  ", "Nuevo", "","" ) ;
         $chk_mul = array('0' => 'Apple', '1' => 'Orange', '2' => 'Lemon', )  ;
