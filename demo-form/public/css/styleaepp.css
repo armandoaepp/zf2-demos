@@ -123,12 +123,12 @@ table { border-spacing: 0; }
 
 .vform textarea, .vform input[type="text"], .vform input[type="password"], .vform input[type="datetime"], .vform input[type="datetime-local"], .vform input[type="date"],
 .vform input[type="month"], .vform input[type="time"], .vform input[type="week"], .vform input[type="number"], .vform input[type="email"], .vform input[type="url"],
-.vform input[type="tel"], .vform input[type="color"], .vform select{
+.vform input[type="tel"], .vform input[type="color"], .vform input[type=file],.vform select  {
 	width: 100%;
 }
 .hform textarea, .hform input[type="text"], .hform input[type="password"], .hform input[type="datetime"], .hform input[type="datetime-local"], .hform input[type="date"],
 .hform input[type="month"], .hform input[type="time"], .hform input[type="week"], .hform input[type="number"], .hform input[type="email"], .hform input[type="url"],
-.hform input[type="tel"], .hform input[type="color"], .hform select {
+.hform input[type="tel"], .hform input[type="color"],.hform input[type=file], .hform select {
 	width: 65%;
 }
 
@@ -158,12 +158,12 @@ table { border-spacing: 0; }
 }
 .vform input[type="text"]:focus, .vform input[type="password"]:focus, .vform input[type="datetime"]:focus, .vform input[type="email"]:focus,
 .vform input[type="datetime-local"]:focus, .vform input[type="date"]:focus, .vform input[type="month"]:focus, .vform input[type="time"]:focus,
-.vform input[type="week"]:focus, .vform input[type="url"]:focus, .vform input[type="number"]:focus, .vform input[type="search"]:focus, .vform input[type="tel"]:focus,
+.vform input[type="week"]:focus, .vform input[type="url"]:focus, .vform input[type="number"]:focus, .vform input[type="search"]:focus, .vform input[type="tel"]:focus, .vform input[type=file]:focus,
 .vform textarea:focus,
 .hform textarea:focus, .hform input[type="text"]:focus, .hform input[type="password"]:focus, .hform input[type="datetime"]:focus,
 .hform input[type="datetime-local"]:focus, .hform input[type="date"]:focus, .hform input[type="month"]:focus, .hform input[type="time"]:focus,
 .hform input[type="week"]:focus, .hform input[type="number"]:focus, .hform input[type="email"]:focus, .hform input[type="url"]:focus, .hform input[type="search"]:focus,
-.hform input[type="tel"]:focus, .hform input[type="color"]:focus{
+.hform input[type="tel"]:focus, .hform input[type="color"]:focus , .hform input[type=file]:focus{
   border: 1px solid;
   border-color: rgba(82, 168, 236, 0.8);
   color: #444;

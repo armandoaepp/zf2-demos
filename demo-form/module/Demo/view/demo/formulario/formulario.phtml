@@ -121,6 +121,12 @@ echo $this->form()->openTag($form);
         ?>
     </fieldset>
 
+<p>form ROw </p>
+     <fieldset class="c6">
+        <?php
+            echo $this->formRow($form->get('img_'));
+        ?>
+    </fieldset>
 
 	<fieldset class=" text-right">
 		<?php echo $this->formElement($form->get('btnEnviar')) ?>

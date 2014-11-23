@@ -1,9 +1,3 @@
-<?php
-    if (defined('RUNNING_FROM_ROOT')) {
-        $this->plugin('basePath')->setBasePath($this->basePath().'/public');
-    }
-?>
-
 <?php echo $this->doctype(); ?>
 
 <html lang="en">
@@ -58,12 +52,6 @@
         <br>
         <br>
         <div class="container">
-        <?php
-            /*if (defined('RUNNING_FROM_ROOT')) {
-                $this->plugin('basePath')->setBasePath($this->basePath().'/public');
-            }*/
-        ?>
-
             <?php echo $this->content; ?>
             <hr>
             <footer>

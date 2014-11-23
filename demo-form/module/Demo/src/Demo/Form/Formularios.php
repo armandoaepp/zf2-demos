@@ -11,52 +11,14 @@ use Zend\Form\Factory;
 
 class Formularios extends Form
 {
-
 	function __construct($name = null )
 	{
 		parent::__construct($name);
 
-		/*$this->add(array(
-            'name' => 'Nombre',
-            'options' => array(
-                'label' => 'Nombre Completo',
-            ),
-            'attributes' => array(
-                'type' => 'text',
-                'class' => ''
-            ),
-        ));
-
-     $factory = new Factory();
-
-        $email = $factory->createElement(array(
-            'type' => 'Zend\Form\Element\Email',
-            'name' => 'email',
-            'options' => array(
-                'label' => 'Email: ',
-            ),
-            'attributes' => array(
-
-                'class' => ''
-            ),
-                ));
-
-        $this->add($email);
-*/
-      $this->add(array(
-            'name' => 'send',
-            'attributes' => array(
-                'type' => 'submit',
-                'value' => 'Enviar',
-                'title' => 'Enviar',
-                'class' => 'btn btn-default'
-            ),
-        ));
-
 	}
 
 
-  public function inputText($name , $nameLabel , $classCss = "" )
+  public function elementText($name , $nameLabel , $value = "" , $classCss = "" )
   {
     $this->add(array(
               'name' => $name,
@@ -65,13 +27,14 @@ class Formularios extends Form
               ),
              'attributes' => array(
                 'type'  => 'text',
+                'value' => $value ,
                 'class' => $classCss,
                 'id'    => $name,
               ),
             ));
   }
 
-  public function inputEmail($name , $nameLabel , $classCss = "" )
+  public function elementEmail($name , $nameLabel , $value= "" , $classCss = "" )
   {
       $this->add(array(
             'type' => 'Zend\Form\Element\Email',
@@ -80,13 +43,35 @@ class Formularios extends Form
                 'label' =>  $nameLabel,
             ),
             'attributes' => array(
+                'value' => $value ,
                 'class' => $classCss ,
                 'id'    => $name,
             ),
         ));
   }
 
-  public function inputCheckbox($name , $nameLabel , $value = '' , $classCss = "" )
+  # campo de tipo password
+  public function elementPassword($name , $nameLabel , $value= "" , $classCss = "" )
+  {
+        $this->add(array(
+              'type' => 'password',
+              'name' => $name,
+              'options' => array(
+                  'label' =>  $nameLabel,
+              ),
+              'attributes' => array(
+                  'value' => $value ,
+                  'class' => $classCss ,
+                  'id'    => $name,
+              ),
+          )
+        );
+  }
+
+
+
+
+  public function elementCheckbox($name , $nameLabel , $value = "" , $classCss = "" )
   {
       $this->add(array(
                  'type' => 'Zend\Form\Element\Checkbox',
@@ -98,7 +83,7 @@ class Formularios extends Form
          ));
   }
 
-  public function textArea($name , $nameLabel , $classCss = "" )
+  public function textArea($name , $nameLabel , $value = "" , $classCss = "" )
   {
       $this->add(array(
             'type' => 'Zend\Form\Element\Textarea',
@@ -107,6 +92,7 @@ class Formularios extends Form
                 'label' =>  $nameLabel,
             ),
             'attributes' => array(
+                'value' => $value ,
                 'class' => $classCss ,
                 'id' => $name ,
             ),
@@ -128,7 +114,7 @@ class Formularios extends Form
           ));
   }
 
-  public function inputMultiCheckbox($name , $nameLabel , $options_values  = array() )
+  public function elementMultiCheckbox($name , $nameLabel , $options_values  = array() )
   {
        $this->add(array(
                'type' => 'Zend\Form\Element\MultiCheckbox',
@@ -140,7 +126,7 @@ class Formularios extends Form
        ));
   }
 
-  public function inputMultiRadio($name , $nameLabel , $options_values  = array() )
+  public function elementMultiRadio($name , $nameLabel , $options_values  = array() )
   {
        $this->add(array(
                'type' => 'Zend\Form\Element\Radio',
@@ -152,7 +138,7 @@ class Formularios extends Form
        ));
   }
 
-  public function inputDate($name , $nameLabel , $classCss = "" )
+  public function elementDate($name , $nameLabel,$value = "" , $classCss = "" )
   {
         $this->add(array(
             'type' => 'Zend\Form\Element\Date',
@@ -161,6 +147,7 @@ class Formularios extends Form
                 'label' =>  $nameLabel,
             ),
             'attributes' => array(
+                'value' => $value ,
                 'class' => $classCss ,
                 'id'    => $name,
             ),
@@ -168,14 +155,14 @@ class Formularios extends Form
   }
 
 
-/* options_values =  array(
+  /* options_values =  array(
        '0' => 'Apple',
        '1' => 'Orange',
        '2' => 'Lemon',
     )*/
 
 
-  public function selectOption($name , $nameLabel , $options_values  = array()  , $classCss = "", $optionEmpty = '[Seleccionar Opcion ]' )
+  public function elementSelect($name , $nameLabel , $options_values  = array()  , $classCss = "", $optionEmpty = '[Seleccionar Opcion ]' )
   {
        $this->add(array(
                'type' => 'Zend\Form\Element\Select',
@@ -193,16 +180,16 @@ class Formularios extends Form
   }
 
 
-  public function inputFile($name , $nameLabel )
+  public function elementFile($name , $nameLabel )
   {
-      // File Input
+      // File element
       $file = new Element\File($name);
       $file->setLabel($nameLabel)
            ->setAttribute('id', $name);
       $this->add($file);
   }
 
-  public function inputButton($name , $nameLabel , $classCss = "" )
+  public function elementSubmit($name , $nameLabel , $classCss = "btn" )
   {
        $this->add(array(
                'name' => $name ,
@@ -215,6 +202,28 @@ class Formularios extends Form
                   'class' => $classCss , //'btn btn-default'
             ),
        ));
+  }
+
+  public function elementButton($name , $nameLabel  , $onclick = "", $classCss = "btn" )
+  {
+     $this->add(array(
+          'type' => 'Button',
+          'name' => $name,
+          'options' => array(
+              'label'   => $nameLabel,
+              /*'label'   => '<i class="icon-save"></i>'. $nameLabel,
+              'label_options' => array(
+                'disable_html_escape' => true,
+              ),*/
+          ),
+          'attributes' => array(
+              'id'      => $name,
+              'class'   => $classCss,
+              'onclick' =>  $onclick ,
+              'value' => $nameLabel,
+              'title' => $nameLabel,
+          )
+      ));
   }
 
 
