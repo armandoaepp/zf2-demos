@@ -1,14 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-</head>
-<body>
-	<ul>
-		<li id > Formulario -> hola este es un formulario  </li>
-		<li></li>
-		<li></li>
-	</ul>
-</body>
-</html>
+<h1><?php echo $this->titulo?></h1>
+
+<?php // echo print_r($data)?>
+<table class="table table-hover table-zebra ">
+	<thead>
+	    <tr>
+	        <th>Id</th>
+	        <th>Nombre</th>
+	        <th>Apellidos</th>
+	        <th>E-Mail</th>
+	        <th></th>
+	    </tr>
+	</thead>
+    <tbody>
+    <?php foreach ($this->data as $dato){ ?>
+        <tr>
+
+            <td><?php echo $dato["id"] ?></td>
+            <td><?php echo $dato["nombre"] ?></td>
+            <td><?php echo $dato["apellidos"] ?></td>
+            <td><?php echo $dato["email"] ?></td>
+            <td>
+                <a href="<?php echo $this->basePath() ?>/demo/usuario/ver/<?php echo $dato["id"]?>">ver</a>
+            </td>
+        </tr>
+    <?php } ?>
+    </tbody>
+
+
+</table>

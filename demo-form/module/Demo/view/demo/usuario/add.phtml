@@ -1,0 +1,24 @@
+<h1><?php echo $this->titulo?></h1>
+<table style="width:400px; text-align:left">
+    <tr>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>E-Mail</th>
+    </tr>
+    <?php foreach ($this->datos as $dato){ ?>
+        <tr style="background-color:<?php echo $this->cycle(array("#F0F0F0","#FFFFFF"))->next()?>">
+
+            <td><?php echo $dato["id"] ?></td>
+            <td><?php echo $dato["nombre"] ?></td>
+            <td><?php echo $dato["correo"] ?></td>
+            <td>
+                <a href="<?php echo $this->basePath() ?>/application/index/ver/<?php echo $dato["id"]?>">ver</a>
+            </td>
+        </tr>
+    <?php } ?>
+
+    <?php
+    $this->cycle()->assign(array("#F0F0F0", "#FFFFFF"));
+    $this->cycle()->prev();
+    ?>
+</table>

@@ -545,7 +545,14 @@ select:focus:invalid:focus {
 	   -moz-box-shadow: 0 1px 2px #d1d1d1;
 	-webkit-box-shadow: 0 1px 2px #d1d1d1;
 }
-.table td, .table th {border-top: 1px solid #ccc; border-left: 1px solid #ccc; padding: 1px 5px ; text-align: left;}
+.table td,
+.table th {
+	border-top: 1px solid #ccc;
+	border-left: 1px solid #ccc;
+	padding: 8px 4px ;
+	text-align: left;
+	/*line-height: 1.428571429;*/
+}
 .table th {
 	background-color: #f0f0f0;
 	        box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;
@@ -557,7 +564,7 @@ select:focus:invalid:focus {
 	line-height: 20px;
 	text-align: center;
 }
-.table td{font-size:11px; color:#000; /*#0F2167*/}
+.table td{font-size:11px; color:#303032 ;}
 .table tr:first-child th:first-child{
  	        border-top-left-radius: 5px;
 	    -moz-border-radius-topleft: 5px;
@@ -583,9 +590,9 @@ select:focus:invalid:focus {
 
 .table-hover tbody tr:hover ,
 .table-hover tbody tr:hover
-.table-hover  tr:hover ,
-.table-hover  tr:hover {
-	font-weight:bold;
+.table-hover  tr:hover td,
+.table-hover  tr:hover td{
+	font-weight:500;
     cursor: pointer;
     background-color: #f5f5f5;
 }

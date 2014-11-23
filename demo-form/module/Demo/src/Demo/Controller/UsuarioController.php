@@ -6,22 +6,53 @@ namespace Demo\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 # para conexion a DB
-use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\Adapter\Adapter;
+use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\Sql\Sql;
 
 use Demo\Form\Formularios ;
+
+# con ClsUsuario
 use Demo\Model\Entity\Procesa;
 use Demo\Model\Entity\ClsUsuario;
+
+# con Usuario
+use Demo\Model\Entity\Usuario;
 
 
 class UsuarioController extends AbstractActionController
 {
+    public $dbAdapter ;
     public function indexAction()
     {
+         $this->dbAdapter = $this->getServiceLocator()->get('Zend\Db\Adapter');
+          $objusaurio = new Usuario($this->dbAdapter);
+
+         $lista_user = $objusaurio->getUsuarios() ;
+
         $objForm = new Formularios("Form");
-        return array();
+
+         $data = array(
+                        'title'=>"Listando con TableGateway",
+                        'data'=>  $lista_user,
+                    ) ;
+        return new ViewModel($data);
+
     }
+
+    public function verAction()
+    {
+        $this->dbAdapter=$this->getServiceLocator()->get('Zend\Db\Adapter');
+        $u=new Usuario($this->dbAdapter);
+        $id = (int) $this->params()->fromRoute('id', 0);
+        $valores=array
+        (
+            "titulo"    =>  "Mostrando Detalle del usuario",
+            'datos'     =>  $u->getUsuarioPorId($id)
+        );
+        return new ViewModel($valores);
+    }
+
 
     public function fooAction()
     {
@@ -65,6 +96,8 @@ class UsuarioController extends AbstractActionController
         $datos=$procesa->getData();
         return new ViewModel(array('datos'=>$datos));
     }
+
+
 
     public function resultAction()
     {
